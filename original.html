@@ -21,38 +21,23 @@
     -->
 
     <pre class="line-numbers"><code class="language-python">
-def median(pool):
-    '''Statistical median to demonstrate doctest.
-    >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
-    7
-    '''
-    copy = sorted(pool)
-    size = len(copy)
-    if size % 2 == 1:
-        return copy[(size - 1) / 2]
-    else:
-        return (copy[size/2 - 1] + copy[size/2]) / 2
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
         import tft_config
-import s3lcd
-import vga1_8x8 as font
-import framebuf
-""" Inicializamos la interfaz """
-tft = tft_config.config()
-tft.init()
-tft.fill(s3lcd.WHITE)
-
-""" Constantes """
-ancho = tft.width() # == 170 pixel
-alto = tft.height() # == 320 pixel
-print(f"{ancho} x {alto}")
-
-tft.text(font,'Micro',0,0,s3lcd.RED)
-tft.hline(0,9,ancho//2,s3lcd.GREEN)
-tft.show()
+        import s3lcd
+        import vga1_8x8 as font
+        import framebuf
+        """ Inicializamos la interfaz """
+        tft = tft_config.config()
+        tft.init()
+        tft.fill(s3lcd.WHITE)
+        
+        """ Constantes """
+        ancho = tft.width() # == 170 pixel
+        alto = tft.height() # == 320 pixel
+        print(f"{ancho} x {alto}")
+        
+        tft.text(font,'Micro',0,0,s3lcd.RED)
+        tft.hline(0,9,ancho//2,s3lcd.GREEN)
+        tft.show()
 
 </code></pre>
 </body>
