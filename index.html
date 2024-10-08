@@ -163,11 +163,15 @@
                         margin-top: 10px;
                         border-radius: 0 0 5px 5px;
                     }
+                    pre {
+                        white-space: pre; /* Mantener espacios y saltos de línea */
+                        word-wrap: break-word; /* Para manejar líneas largas */
+                    }
                 </style>
             </head>
             <body>
                 <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
-                <pre class="line-numbers"><code class="language-python">${formattedCode}</code></pre>
+                <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
                 <div class="file-info">${fileInfo}</div>
             </body>
             </html>`;
