@@ -139,6 +139,12 @@
             // Forzar Prism.js a resaltar el nuevo código
             Prism.highlightElement(codeOutput);
 
+            // Generar el HTML completo para embed, manteniendo el formato
+            const formattedCode = escapedCode.replace(/</g, '&lt;')
+                                              .replace(/>/g, '&gt;')
+                                              .replace(/ /g, '&nbsp;')
+                                              .replace(/\n/g, '<br>'); // Mantener saltos de línea
+
             // Generar el HTML completo para embed
             htmlOutput.innerText = 
             `<!DOCTYPE html>
@@ -161,7 +167,7 @@
             </head>
             <body>
                 <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
-                <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
+                <pre class="line-numbers"><code class="language-python">${formattedCode}</code></pre>
                 <div class="file-info">${fileInfo}</div>
             </body>
             </html>`;
