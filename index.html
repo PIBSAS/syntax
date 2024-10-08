@@ -125,7 +125,9 @@
                                           .replace(/</g, '&lt;')
                                           .replace(/>/g, '&gt;')
                                           .replace(/"/g, '&quot;')
-                                          .replace(/'/g, '&#39;');
+                                          .replace(/'/g, '&#39;')
+                                          .replace(/\n/g, '<br>')
+                                          .replace(/\s/g, '&nbsp;'); // Mantener espacios
 
             // Insertar el nuevo código
             codeOutput.innerHTML = escapedCode;
