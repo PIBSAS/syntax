@@ -97,7 +97,7 @@
         <div>
             <h3>Código Resaltado:</h3>
             <pre class="line-numbers"><code id="codeOutput" class="language-python"></code></pre>
-            <div class="file-info">Autor: Tu Nombre | Archivo: hello_world.py</div>
+            <div class="file-info" id="fileInfo"></div>
         </div>
         <div>
             <h3>Código HTML para Embed:</h3>
@@ -106,10 +106,6 @@
                 <button onclick="copyCode()">Copiar Código</button>
             </div>
         </div>
-    </div>
-    <div class="footer">
-            <span>Autor: </span>
-            <span>Archivo: <input type="text" id="fileName" placeholder="Nombre del archivo"></span>
     </div>
 
     <script>
@@ -133,11 +129,13 @@
             // Insertar el nuevo código
             codeOutput.innerHTML = escapedCode;
 
+            // Actualizar el nombre del archivo y el autor
+            document.getElementById('fileInfo').innerHTML = `Autor: Toto | Archivo: ${fileName}.py`;
+
             // Forzar Prism.js a resaltar el nuevo código
             Prism.highlightElement(codeOutput);
 
             // Generar el HTML completo para embed
-            const fileName = document.getElementById('fileName').value || "sin_nombre.py";
             htmlOutput.innerText = 
             `<!DOCTYPE html>
             <html lang="es">
@@ -159,8 +157,7 @@
                     copyMessage.style.display = 'none'; // Ocultar mensaje después de 2 segundos
                 }, 2000);
             });
-        }
-        
+        } 
     </script>
 </body>
 </html>
