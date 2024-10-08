@@ -30,6 +30,20 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        pre {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+        }
+        .code-output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background-color: #333;
+        }
     </style>
 </head>
 
@@ -42,15 +56,22 @@
     <h2>Código Resaltado:</h2>
     <pre class="line-numbers"><code id="codeOutput" class="language-python"></code></pre>
 
+    <h2>Código HTML para Embed:</h2>
+    <div class="code-output">
+        <code id="htmlOutput"></code>
+    </div>
+
     <script src="prism.js"></script>
     <script src="prism-python.min.js"></script>
     <script>
         function addCode() {
             const codeInput = document.getElementById('codeInput').value;
             const codeOutput = document.getElementById('codeOutput');
+            const htmlOutput = document.getElementById('htmlOutput');
 
             // Limpiar el código anterior
             codeOutput.innerHTML = '';
+            htmlOutput.innerHTML = '';
 
             // Escapar caracteres especiales en el código
             const escapedCode = codeInput.replace(/&/g, '&amp;')
@@ -64,6 +85,9 @@
 
             // Forzar Prism.js a resaltar el nuevo código
             Prism.highlightElement(codeOutput);
+
+            // Generar el HTML para embed
+            htmlOutput.innerText = `<pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>`;
         }
     </script>
 </body>
