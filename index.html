@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resaltador de MicroPython</title>
 
-    <link rel="stylesheet" href="prism.css" />
     <style>
+        /* CSS para la página */
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -61,8 +61,10 @@
         <code id="htmlOutput"></code>
     </div>
 
-    <script src="prism.js"></script>
-    <script src="prism-python.min.js"></script>
+    <!-- Cargar los archivos de Prism.js desde tu repositorio -->
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/PIBSAS/syntax/main/prism.css" />
+    <script src="https://raw.githubusercontent.com/PIBSAS/syntax/main/prism.js"></script>
+
     <script>
         function addCode() {
             const codeInput = document.getElementById('codeInput').value;
@@ -86,8 +88,20 @@
             // Forzar Prism.js a resaltar el nuevo código
             Prism.highlightElement(codeOutput);
 
-            // Generar el HTML para embed
-            htmlOutput.innerText = `<pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>`;
+            // Generar el HTML completo para embed
+            htmlOutput.innerText = `<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/prism.css" />
+</head>
+<body>
+    <script src="https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/prism.js"></script>
+    <script src="https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/components/prism-python.min.js"></script>
+    <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
+</body>
+</html>`;
         }
     </script>
 </body>
