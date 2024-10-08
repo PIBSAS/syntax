@@ -57,6 +57,11 @@
         .output-container > div:last-child {
             margin-right: 0; /* Sin margen derecho en el último */
         }
+        .footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 
@@ -76,8 +81,13 @@
             <h3>Código HTML para Embed:</h3>
             <div class="code-output">
                 <code id="htmlOutput"></code>
+                <button onclick="copyToClipboard()">Copiar Código</button>
             </div>
         </div>
+    </div>
+    <div class="footer">
+            <span>Autor: </span>
+            <span>Archivo: <input type="text" id="fileName" placeholder="Nombre del archivo"></span>
     </div>
 
     <script>
@@ -104,6 +114,7 @@
             Prism.highlightElement(codeOutput);
 
             // Generar el HTML completo para embed
+            const fileName = document.getElementById('fileName').value || "sin_nombre.py";
             htmlOutput.innerText = 
             `<!DOCTYPE html>
             <html lang="es">
@@ -115,6 +126,18 @@
             <body><script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
             <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre></body></html>`;
         }
+
+        function copyToClipboard() {
+            const htmlOutput = document.getElementById('htmlOutput');
+            const textArea = document.createElement("textarea");
+            textArea.value = htmlOutput.innerText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            alert("Código copiado al portapapeles");
+        }
+        
     </script>
 </body>
 </html>
