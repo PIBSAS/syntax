@@ -73,13 +73,13 @@
         }
         /* Agregar una etiqueta debajo del código */
         .file-info {
-          text-align: center;
-          font-size: 14px;
-          color: #ffffff;
-          background-color: #44475a;
-          padding: 10px;
-          margin-top: 10px;
-          border-radius: 0 0 5px 5px;
+            text-align: center;
+            font-size: 14px;
+            color: #ffffff;
+            background-color: #44475a;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 0 0 5px 5px;
         }
     </style>
 </head>
@@ -90,7 +90,6 @@
     <input type="text" id="fileName" placeholder="Nombre del archivo sin extensión" />
     <textarea id="codeInput" placeholder="Escribe tu código MicroPython aquí..."></textarea>
     <button onclick="addCode()">Agregar Código</button>
-
     <h2>Código Resaltado y HTML para Embed:</h2>
     <div class="output-container">
         <div>
@@ -147,9 +146,9 @@
             <body>
                 <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
                 <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
-                <div class="file-info" id="fileInfo">Raspberry Pi Buenos Aires | Archivo: ${filename}.py</div>
-            </body
-            ></html>`;
+                <div class="file-info">Autor: Toto | Archivo: ${fileName}.py</div>
+            </body>
+            </html>`;
         }
 
         function copyCode() {
