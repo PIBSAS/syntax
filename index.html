@@ -90,6 +90,8 @@
     <input type="text" id="fileName" placeholder="Nombre del archivo sin extensión" />
     <textarea id="codeInput" placeholder="Escribe tu código MicroPython aquí..."></textarea>
     <button onclick="addCode()">Agregar Código</button>
+    <div class="copy-message" id="copyMessage">¡Código copiado!</div>
+
     <h2>Código Resaltado y HTML para Embed:</h2>
     <div class="output-container">
         <div>
@@ -102,7 +104,6 @@
             <div class="code-output">
                 <code id="htmlOutput"></code>
                 <button onclick="copyCode()">Copiar Código</button>
-                <div class="copy-message" id="copyMessage">¡Código copiado!</div>
             </div>
         </div>
     </div>
@@ -129,7 +130,8 @@
             codeOutput.innerHTML = escapedCode;
 
             // Actualizar el nombre del archivo y el autor
-            document.getElementById('fileInfo').innerHTML = `Autor: Toto | Archivo: ${fileName}.py`;
+            const fileInfo = `Autor: Toto | Archivo: ${fileName}.py`;
+            document.getElementById('fileInfo').innerHTML = fileInfo;
 
             // Forzar Prism.js a resaltar el nuevo código
             Prism.highlightElement(codeOutput);
@@ -142,11 +144,22 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.css" />
+                <style>
+                    .file-info {
+                        text-align: center;
+                        font-size: 14px;
+                        color: #ffffff;
+                        background-color: #44475a;
+                        padding: 10px;
+                        margin-top: 10px;
+                        border-radius: 0 0 5px 5px;
+                    }
+                </style>
             </head>
             <body>
                 <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
                 <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
-                <div class="file-info">Autor: Toto | Archivo: ${fileName}.py</div>
+                <div class="file-info">${fileInfo}</div>
             </body>
             </html>`;
         }
