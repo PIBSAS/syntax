@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resaltador de MicroPython</title>
+
+    <link rel="stylesheet" href="prism.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #2d2d2d;
+            color: #ffffff;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: 1px solid #444;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #50fa7b;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Resaltador de MicroPython</h1>
+    <textarea id="codeInput" placeholder="Escribe tu código MicroPython aquí..."></textarea>
+    <button onclick="addCode()">Agregar Código</button>
+
+    <h2>Código Resaltado:</h2>
+    <pre class="line-numbers"><code id="codeOutput" class="language-python"></code></pre>
+
+    <script src="prism.js"></script>
+    <script src="prism-python.min.js"></script>
+    <script>
+        function addCode() {
+            const codeInput = document.getElementById('codeInput').value;
+            const codeOutput = document.getElementById('codeOutput');
+
+            // Limpiar el código anterior
+            codeOutput.innerHTML = '';
+
+            // Escapar caracteres especiales en el código
+            const escapedCode = codeInput.replace(/&/g, '&amp;')
+                                          .replace(/</g, '&lt;')
+                                          .replace(/>/g, '&gt;')
+                                          .replace(/"/g, '&quot;')
+                                          .replace(/'/g, '&#39;');
+
+            // Insertar el nuevo código
+            codeOutput.innerHTML = escapedCode;
+
+            // Forzar Prism.js a resaltar el nuevo código
+            Prism.highlightElement(codeOutput);
+        }
+    </script>
+</body>
+</html>
