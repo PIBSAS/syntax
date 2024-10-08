@@ -1,77 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resaltado MicroPython</title>
-  
-  <!-- Incluir Prism.js y el tema oscuro "Okaidia" -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-okaidia.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resaltado MicroPython</title>
 
-  <style>
-    
-    /* Cambiar el color de las palabras clave */
-    .token.keyword {
-      color: #ff79c6; /* Rosado para def, class, etc. */
-    }
-
-    /* Cambiar el color de las funciones */
-    .token.function {
-      color: #50fa7b; /* Verde para funciones como print, input */
-    }
-
-    /* Resaltar palabras clave específicas de MicroPython */
-    .token.builtin {
-      color: #bd93f9; /* Lila para Pin, I2C, UART */
-    }
-
-    /* Cambiar el color de las variables */
-    .token.variable {
-      color: #f1fa8c; /* Amarillo para variables */
-    }
-
-    /* Personalizar los números */
-    .token.number {
-      color: #ffb86c; /* Naranja para números */
-    }
-
-    /* Personalización de los números de línea */
-    .line-numbers .line-numbers-rows {
-      border-right: 1px solid #444;
-    }
-    .line-numbers-rows > span:before {
-      color: #888;
-    }
-
-    /* Agregar una etiqueta debajo del código */
-    .file-info {
-      text-align: center;
-      font-size: 14px;
-      color: #ffffff;
-      background-color: #44475a;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 0 0 5px 5px;
-    }
-  </style>
+    <!-- Estilos y scripts para Prism.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.css" />
 </head>
+
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
-<pre class="line-numbers"><code class="language-py">
-import machine
-from machine import Pin
+    <pre class="line-numbers"><code class="language-python">
+def median(pool):
+    '''Statistical median to demonstrate doctest.
+    >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
+    7
+    '''
+    copy = sorted(pool)
+    size = len(copy)
+    if size % 2 == 1:
+        return copy[(size - 1) / 2]
+    else:
+        return (copy[size/2 - 1] + copy[size/2]) / 2
 
-def toggle_led():
-    led = Pin(2, Pin.OUT)
-    led.value(not led.value())
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
 </code></pre>
-
-<div class="file-info">
-  Autor: Tu Nombre | Archivo: led_toggle.py
-</div>
-
 </body>
 </html>
