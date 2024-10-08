@@ -44,6 +44,17 @@
             border-radius: 5px;
             background-color: #333;
         }
+        .output-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .output-container > div {
+            flex: 1; /* Ocupar el mismo espacio */
+            margin-right: 10px; /* Espacio entre los contenedores */
+        }
+        .output-container > div:last-child {
+            margin-right: 0; /* Sin margen derecho en el último */
+        }
     </style>
 </head>
 
@@ -53,17 +64,23 @@
     <textarea id="codeInput" placeholder="Escribe tu código MicroPython aquí..."></textarea>
     <button onclick="addCode()">Agregar Código</button>
 
-    <h2>Código Resaltado:</h2>
-    <pre class="line-numbers"><code id="codeOutput" class="language-python"></code></pre>
-
-    <h2>Código HTML para Embed:</h2>
-    <div class="code-output">
-        <code id="htmlOutput"></code>
+    <h2>Código Resaltado y HTML para Embed:</h2>
+    <div class="output-container">
+        <div>
+            <h3>Código Resaltado:</h3>
+            <pre class="line-numbers"><code id="codeOutput" class="language-python"></code></pre>
+        </div>
+        <div>
+            <h3>Código HTML para Embed:</h3>
+            <div class="code-output">
+                <code id="htmlOutput"></code>
+            </div>
+        </div>
     </div>
 
     <!-- Cargar los archivos de Prism.js desde tu repositorio -->
-    <link rel="stylesheet" href="prism.css" />
-    <script src="prism.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
 
     <script>
         function addCode() {
@@ -89,7 +106,6 @@
             Prism.highlightElement(codeOutput);
 
             // Generar el HTML completo para embed
-            // Generar el HTML completo para embed
             htmlOutput.innerText = 
             `<!DOCTYPE html>
             <html lang="es">
@@ -100,7 +116,6 @@
             </head>
             <body><script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
             <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre></body></html>`;
-
         }
     </script>
 </body>
