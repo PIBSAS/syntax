@@ -50,6 +50,8 @@
             background-color: #333;
         }
         .code-output {
+            white-space: pre-wrap; /* Mantiene los saltos de línea y los espacios */
+            overflow-x: auto; /* Agrega un scroll horizontal si es necesario */
             margin-top: 20px;
             padding: 10px;
             border: 1px solid #444;
@@ -147,19 +149,19 @@
 
             // Generar el HTML completo para embed
             htmlOutput.innerText = 
-            `<!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.css" />
-            </head>
-            <body>
-                <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
-                <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
-                <div class="file-info">${fileInfo}</div>
-            </body>
-            </html>`;
+            `&lt;!DOCTYPE html&gt;<br>
+            &lt;html lang="es"&gt;<br>
+            &lt;head&gt;<br>
+                &lt;meta charset="UTF-8"&gt;<br>
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.css" /&gt;<br>
+            &lt;/head&gt;<br>
+            &lt;body&gt;<br>
+                &lt;script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"&gt;&lt;/script&gt;<br>
+                &lt;pre class="line-numbers"&gt;&lt;code class="language-python"&gt;${escapedCode}&lt;/code&gt;&lt;/pre&gt;<br>
+                &lt;div class="file-info"&gt;${fileInfo}&lt;/div&gt;<br>
+            &lt;/body&gt;<br>
+            &lt;/html&gt;`;
         }
 
         function copyCode() {
