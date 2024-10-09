@@ -8,7 +8,17 @@
     <script src="prism.js"></script>
     
     <title>Resaltador de MicroPython</title>
-    
+
+    <style>
+        /* Estilo para mantener el formato del código HTML */
+        .code-output {
+            white-space: pre-wrap; /* Mantener los saltos de línea */
+            overflow: auto; /* Añadir desplazamiento si es necesario */
+            background-color: #f0f0f0; /* Color de fondo para distinguir */
+            padding: 10px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+    </style>
 </head>
 
 <body>
@@ -65,32 +75,32 @@
 
             // Generar el HTML completo para embed
             htmlOutput.innerText = 
-            `<!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.css" />
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/style.min.css" />
-            </head>
-            <style>
-                body {
-                    background-color: transparent !important; /* Eliminar fondo global */
-                    margin: 0; /* Quitar márgenes que puedan agregar espacio */
-                    border: none !important; /* Quitar borde */
-                }
-                 pre {
-                    border: none !important; /* Quitar borde */
-                    margin: 0;
-                    padding: 0;
-                }
-            </style>
-            <body>
-                <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
-                <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
-                <div class="file-info">${fileInfo}</div>
-            </body>
-            </html>`;
+`<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/style.min.css" />
+</head>
+<style>
+    body {
+        background-color: transparent !important; /* Eliminar fondo global */
+        margin: 0; /* Quitar márgenes que puedan agregar espacio */
+        border: none !important; /* Quitar borde */
+    }
+     pre {
+        border: none !important; /* Quitar borde */
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<body>
+    <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
+    <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
+    <div class="file-info">${fileInfo}</div>
+</body>
+</html>`;
         }
 
         function copyCode() {
