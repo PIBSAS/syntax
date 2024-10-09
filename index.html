@@ -74,9 +74,13 @@
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/style.min.css" />
             </head>
             <style>
-                /* Sobrescribir fondo del pre y el code */
-                pre, code {
-                    background-color: transparent !important; /* Fondo transparente */
+                body {
+                    background-color: transparent !important; /* Eliminar fondo global */
+                    margin: 0; /* Quitar márgenes que puedan agregar espacio */
+                }
+                .output-container, .file-info, pre {
+                    background-color: transparent !important; /* Eliminar fondo alrededor */
+                    border: none !important; /* Quitar bordes si existen */
                 }
             </style>
             <body>
