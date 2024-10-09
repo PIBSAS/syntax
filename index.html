@@ -28,10 +28,7 @@
         <div>
             <h3>Código HTML para Embed:</h3>
             <div class="code-output">
-                <!--<pre class="line-numbers language-python" tabindex="0">-->
-                <pre>
-                <code id="htmlOutput"></code>
-                </pre>
+                <pre><code id="htmlOutput"></code></pre>
             </div>
             <button onclick="copyCode()">Copiar Código</button>
             <div class="copy-message" id="copyMessage">¡Código copiado!</div>
@@ -55,8 +52,6 @@
                                           .replace(/>/g, '&gt;')
                                           .replace(/"/g, '&quot;')
                                           .replace(/'/g, '&#39;');
-                                       //   .replace(/\n/g, '<br>')
-                                          //.replace(/\s/g, '&nbsp;'); // Mantener espacios
 
             // Insertar el nuevo código
             codeOutput.innerHTML = escapedCode;
@@ -78,6 +73,12 @@
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.css" />
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/style.min.css" />
             </head>
+            <style>
+                /* Sobrescribir fondo del pre y el code */
+                pre, code {
+                    background-color: transparent !important; /* Fondo transparente */
+                }
+            </style>
             <body>
                 <script src="https://cdn.jsdelivr.net/gh/PIBSAS/syntax/prism.min.js"><\/script>
                 <pre class="line-numbers"><code class="language-python">${escapedCode}</code></pre>
